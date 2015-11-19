@@ -8,7 +8,7 @@
     "Vin": "2"
   },
   "LED_guest": {
-    "Vin": "pwm"
+    "Vin": "6"
   },
   "Temp_sens": {
     "I": "ai"
