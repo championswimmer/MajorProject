@@ -22,6 +22,23 @@ module.exports = {
                 blue: pinConfig.RGB_Hall.B
             }
         });
-
+    },
+    getBedLed() {
+        return new five.Led(pinConfig.LED_bed);
+    },
+    getGuestLed() {
+        return new five.Led(pinConfig.LED_guest);
+    },
+    getHallLcd() {
+        return new five.LCD({
+            pins: [
+                pinConfig.LCD_Hall.RS,
+                pinConfig.LCD_Hall.EN,
+                pinConfig.LCD_Hall.D4,
+                pinConfig.LCD_Hall.D5,
+                pinConfig.LCD_Hall.D6,
+                pinConfig.LCD_Hall.D7
+            ]
+        });
     }
 };
