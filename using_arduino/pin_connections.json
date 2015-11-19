@@ -5,7 +5,7 @@
     "B": "pwm"
   },
   "LED_bed": {
-    "Vin": "pwm"
+    "Vin": "2"
   },
   "LED_guest": {
     "Vin": "pwm"
