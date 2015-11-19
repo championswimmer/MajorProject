@@ -1,4 +1,5 @@
 "use strict";
+// Warning, this is an ES6 Harmony script. Either transpile, or run on compatible runtime.
 var arduino = require('./arduinoctrl.js');
 var express = require('express');
 var colorlist = require('./colors.json');
@@ -12,6 +13,12 @@ var devices = {
     hall: {
         rgb : null,
         lcd: null
+    },
+    bedroom: {
+        led: null
+    },
+    guestroom: {
+        led: null
     }
 };
 var app = express();
@@ -88,6 +95,44 @@ app.get('/hall/:appl', (req, res) => {
         devices.hall.lcd.print('Hello');
     }
     res.send(response);
+});
+
+app.get ('/bedroom/:appl', (req, res) => {
+    let response = ('Controlling bedroom appliance');
+    if (req.params.appl === 'led' ) {
+        if (devices.bedroom.led === null || devices.bedroom.led === undefined) {
+            devices.bedroom.led = arduino.getBedLed();
+        }
+
+        switch (req.query.cmd) {
+            case 'on':
+                devices.bedroom.led.fadeIn();
+                break;
+            case 'off':
+                devices.bedroom.led.fadeOut();
+                break;
+        }
+    }
+    res.send(response);
+});
+
+app.get ('/guestroom/:appl', (req, res) => {
+    let response = ('Controlling guestroom appliance');
+    if (req.params.appl === 'led' ) {
+        if (devices.guestroom.led === null || devices.guestroom.led === undefined) {
+            devices.guestroom.led = arduino.getGuestLed();
+        }
+        switch (req.query.cmd) {
+            case 'on':
+                devices.guestroom.led.fadeIn();
+                break;
+            case 'off':
+                devices.guestroom.led.fadeOut();
+                break;
+        }
+    }
+    res.send(response);
+
 });
 
 var server = app.listen(8888, () => {

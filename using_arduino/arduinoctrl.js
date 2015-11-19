@@ -24,10 +24,10 @@ module.exports = {
         });
     },
     getBedLed() {
-        return new five.Led(pinConfig.LED_bed);
+        return new five.Led(pinConfig.LED_bed.Vin);
     },
     getGuestLed() {
-        return new five.Led(pinConfig.LED_guest);
+        return new five.Led(pinConfig.LED_guest.Vin);
     },
     getHallLcd() {
         return new five.LCD({
