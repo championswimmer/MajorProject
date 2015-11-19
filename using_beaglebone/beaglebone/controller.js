@@ -8,8 +8,7 @@ var boardReady = false;
 var kitchen = {};
 
 
-
-board.on("ready", function() {
+board.on("ready", function () {
     boardReady = true;
     kitchen  = new five.Led("P8_7");
 });
@@ -22,5 +21,4 @@ module.exports = {
 	kitchenOff: function () {
 		kitchen.off();
 	}
-
 };
