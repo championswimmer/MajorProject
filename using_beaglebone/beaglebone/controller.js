@@ -1,3 +1,4 @@
+"use strict";
 var five = require("johnny-five");
 var BeagleBone = require("beaglebone-io");
 var board = new five.Board({
@@ -15,10 +16,10 @@ board.on("ready", function () {
 
 
 module.exports = {
-	kitchenOn: function() {
+	kitchenOn () {
 		kitchen.on();
 	},
-	kitchenOff: function () {
+	kitchenOff () {
 		kitchen.off();
 	}
 };
