@@ -1,0 +1,32 @@
+#Glossary :
+#    pwm = pulse width modulated output (analog output)
+#    ai = analog input
+#    do = digital output
+#    di = digital input
+{
+  "RGB_Hall": {
+    "R": "pwm",
+    "G": "pwm",
+    "B": "pwm"
+  },
+  "LED_bed": {
+    "Vin": "pwm"
+  },
+  "LED_guest": {
+    "Vin": "pwm"
+  },
+  "Temp_sens": {
+    "I": "ai"
+  },
+  "LCD_Hall": {
+    "RS": "do",
+    "EN": "do",
+    "D4": "do",
+    "D5": "do",
+    "D6": "do",
+    "D7": "do"
+  },
+  "Relay_Hall": {
+    "Vin": "do"
+  }
+}
