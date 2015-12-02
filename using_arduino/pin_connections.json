@@ -11,7 +11,7 @@
     "Vin": "6"
   },
   "Temp_sens": {
-    "I": "ai"
+    "I": "0"
   },
   "LCD_Hall": {
     "RS": "8",
