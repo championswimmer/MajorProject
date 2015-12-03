@@ -24,4 +24,5 @@ homeiot.config(['$urlRouterProvider', '$httpProvider', '$mdThemingProvider',
 homeiot.controller('AppController',
     [ '$mdSidenav', '$mdMedia', function($mdSidenav, $mdMedia) {
         var app = this;
+        app.config = config;
     }]);

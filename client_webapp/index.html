@@ -2,24 +2,18 @@
 <html ng-app="homeiot" ng-controller="AppController as appCtrl">
 <head>
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <script src="config.js"></script>
 </head>
 <body>
 <md-content class="md-padding">
-  <md-tabs class="md-primary" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
-    <md-tab id="tab1" ui-sref="hall">
-      <md-tab-label>Hall</md-tab-label>
-      <md-tab-body>
-        <div ui-view></div>
-      </md-tab-body>
-    </md-tab>
-    <md-tab id="tab2" ui-sref="bedroom">
-      <md-tab-label>Bedroom</md-tab-label>
-      <md-tab-body>
-        <div ui-view></div>
-      </md-tab-body>
-    </md-tab>
-    <md-tab id="tab3" ui-sref="guestroom">
-      <md-tab-label>Guestroom</md-tab-label>
+  <md-tabs
+          class="md-primary"
+
+          md-selected="0" md-align-tabs="top">
+
+    <md-tab ng-repeat="room in appCtrl.config.rooms"
+            id="{{ room.key }}" ui-sref="{{ room.key }}">
+      <md-tab-label>{{ room.label }}</md-tab-label>
       <md-tab-body>
         <div ui-view></div>
       </md-tab-body>

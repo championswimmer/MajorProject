@@ -15,4 +15,9 @@ bedroomModule.config(['$stateProvider', function($stateProvider) {
 bedroomModule.controller('BedroomController',
     ['$mdDialog', '$rootScope', function($mdDialog, $rootScope) {
 
+        var brc = this;
+        brc.switchToggle = function () {
+          console.log("Switch toggled");
+        };
+
     }]);
