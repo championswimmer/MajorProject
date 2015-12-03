@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="homeiot" ng-controller="AppController as appCtrl">
+<head>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+</head>
+<body>
+<md-content class="md-padding">
+  <md-tabs class="md-primary" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+    <md-tab id="tab1" ui-sref="hall">
+      <md-tab-label>Hall</md-tab-label>
+      <md-tab-body>
+        <div ui-view></div>
+      </md-tab-body>
+    </md-tab>
+    <md-tab id="tab2" ui-sref="bedroom">
+      <md-tab-label>Bedroom</md-tab-label>
+      <md-tab-body>
+        <div ui-view></div>
+      </md-tab-body>
+    </md-tab>
+    <md-tab id="tab3" ui-sref="guestroom">
+      <md-tab-label>Guestroom</md-tab-label>
+      <md-tab-body>
+        <div ui-view></div>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+  <!--<div ui-view></div>-->
+
+</md-content>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="app.js"></script>
+<script src="app/rooms/hall/HallController.js"></script>
+<script src="app/rooms/bedroom/BedroomController.js"></script>
+<script src="app/rooms/guestroom/GuestroomController.js"></script>
+
+</body>
+</html>
