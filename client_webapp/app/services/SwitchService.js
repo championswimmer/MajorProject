@@ -2,9 +2,9 @@
  * Created by championswimmer on 3/12/15.
  */
 "use strict";
-var switchService = angular.module('hi.switch', []);
+var serviceHandler = angular.module('homeiot');
 
-switchService.service('switchService', function($http, $q) {
+serviceHandler.service('SwitchService', [ '$http', '$q', function($http, $q) {
     var baseUrl = "http://localhost:8888";
     var _room = '';
     var _appl = '';
@@ -35,11 +35,9 @@ switchService.service('switchService', function($http, $q) {
         }).error(function() {
             deferred.reject("Error in switching");
         });
-
-        return deferred.promise;
         // Seriously WTF is this shit. Javascript sucks donkey balls.
         // This is no way to code a language worth it's salt. Ugggghh.
         // Promises my shit. They are meant to be broken.
-
+        return deferred.promise;
     };
-});
+}]);

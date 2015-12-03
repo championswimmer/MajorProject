@@ -12,8 +12,8 @@ var homeiot = angular.module('homeiot',
 homeiot.config(['$urlRouterProvider', '$httpProvider', '$mdThemingProvider',
     function($urlRouterProvider, $httpProvider, $mdThemingProvider) {
 
-        //$httpProvider.defaults.useXDomain = true;
-        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
         $urlRouterProvider.otherwise('hall');
 
         //$mdThemingProvider.theme('default')
