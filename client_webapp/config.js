@@ -15,5 +15,29 @@ var config = {
             key: "guestroom",
             label: "Guestroom"
         }
-    ]
+    ],
+    hall: {
+        switches: [
+            {
+                key: "relay",
+                label: "Bulb"
+            }
+        ]
+    },
+    bedroom: {
+        switches: [
+            {
+                key: "light",
+                label: "Light"
+            }
+        ]
+    },
+    guestroom: {
+        switches: [
+            {
+                key: "light",
+                label: "Light"
+            }
+        ]
+    }
 };
