@@ -18,14 +18,21 @@ bedroomModule.controller('BedroomController',
     ['$mdDialog', '$rootScope', 'SwitchService', function($mdDialog, $rootScope, SwitchService) {
 
         var brc = this;
-        brc.data = {light: false};
+
+        brc.data = {};
+        brc.switches = config.bedroom.switches;
+        for (var i = 0; i < brc.switches.length; i++) {
+
+            console.log( i + " " + JSON.stringify(brc.switches[i]));
+            brc.switches[i].state = false;
+        }
 
         var mySwSrv = SwitchService;
-        brc.switchToggle = function () {
-          console.log("Switch toggled" + brc.data.light);
+        brc.switchToggle = function (sw) {
+          console.log("Switch toggled" + sw.state);
             mySwSrv.setRoom("bedroom");
             mySwSrv.setAppl("led");
-            mySwSrv.setState(brc.data.light ? "off" : "on");
+            mySwSrv.setState(sw.state ? "off" : "on");
             mySwSrv.performSwitch().then(function (data) {
 
             }, function (data) {
