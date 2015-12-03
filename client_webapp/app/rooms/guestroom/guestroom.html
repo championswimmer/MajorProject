@@ -1,1 +1,6 @@
-Hello World ! This is the Guestroom !
+<md-content ng-controller="GuestroomController as gsCtrl">
+    <md-switch ng-repeat="sw in gsCtrl.switches" ng-change="gsCtrl.switchToggle(sw)"
+               class="md-primary" aria-label="{{ sw.label }}" ng-model="sw.state">
+        {{ sw.label }}
+    </md-switch>
+</md-content>

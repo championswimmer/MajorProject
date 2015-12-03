@@ -4,22 +4,21 @@
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <script src="config.js"></script>
 </head>
-<body>
+<body layout="column">
 <md-content class="md-padding">
   <md-tabs
           class="md-primary"
-
           md-selected="0" md-align-tabs="top">
 
     <md-tab ng-repeat="room in appCtrl.config.rooms"
             id="{{ room.key }}" ui-sref="{{ room.key }}">
       <md-tab-label>{{ room.label }}</md-tab-label>
-      <md-tab-body>
-        <div ui-view></div>
-      </md-tab-body>
+      <!--<md-tab-body>-->
+
+      <!--</md-tab-body>-->
     </md-tab>
   </md-tabs>
-  <!--<div ui-view></div>-->
+  <div ui-view></div>
 
 </md-content>
 <script src="bower_components/angular/angular.js"></script>
