@@ -21,6 +21,10 @@ var config = {
             {
                 key: "relay",
                 label: "Bulb"
+            },
+            {
+                key: "rgb",
+                label: "Light"
             }
         ]
     },

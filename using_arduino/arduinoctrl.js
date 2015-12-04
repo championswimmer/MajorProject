@@ -40,5 +40,11 @@ module.exports = {
                 pinConfig.LCD_Hall.D7
             ]
         });
+    },
+    getBedTherm() {
+        return new five.Thermometer({
+            controller: "LM35",
+            pin: pinConfig.Temp_sens
+        });
     }
 };

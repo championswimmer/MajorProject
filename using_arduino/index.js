@@ -15,7 +15,8 @@ var devices = {
         lcd: null
     },
     bedroom: {
-        led: null
+        led: null,
+        therm: null
     },
     guestroom: {
         led: null
@@ -150,6 +151,16 @@ app.get ('/bedroom/:appl', (req, res) => {
                 devices.bedroom.led.fadeOut();
                 break;
         }
+    }
+    if (req.params.appl === 'temp') {
+        if (devices.bedroom.therm === null || devices.bedroom.therm === undefined) {
+            devices.bedroom.therm = arduino.getBedTherm();
+        }
+        devices.bedroom.therm.on("data", function() {
+            console.log(this.celsius + "°C", this.fahrenheit + "°F");
+            devices.bedroom.therm.celcius = this.celcius;
+        });
+        response = devices.bedroom.therm.celcius;
     }
     res.send(response);
 });

@@ -15,34 +15,48 @@ hallModule.config(['$stateProvider', function($stateProvider) {
 }]);
 
 hallModule.controller('HallController',
-    ['$mdDialog', '$rootScope', 'SwitchService', function($mdDialog, $rootScope, SwitchService) {
-        
-        var hc = this;
-        hc.data = {};
-        hc.switches = config.hall.switches;
-        for (var i = 0; i < hc.switches.length; i++) {
+    ['$mdDialog', '$rootScope', 'SwitchService', 'RGBService',
+        function($mdDialog, $rootScope, SwitchService, RGBService) {
 
-            console.log( i + " " + JSON.stringify(hc.switches[i]));
-            hc.switches[i].state = false;
-        }
+            var hc = this;
+            hc.data = {};
+            hc.switches = config.hall.switches;
+            for (var i = 0; i < hc.switches.length; i++) {
 
-        hc.color  = {
-            red: Math.floor(Math.random() * 255),
-            green: Math.floor(Math.random() * 255),
-            blue: Math.floor(Math.random() * 255)
-        };
+                console.log( i + " " + JSON.stringify(hc.switches[i]));
+                hc.switches[i].state = false;
+            }
 
-        var mySwSrv = SwitchService;
-        hc.switchToggle = function (sw) {
-            console.log("Switch toggled" + sw.state);
-            mySwSrv.setRoom("bedroom");
-            mySwSrv.setAppl("led");
-            mySwSrv.setState(sw.state ? "off" : "on");
-            mySwSrv.performSwitch().then(function (data) {
+            hc.color  = {
+                red: Math.floor(Math.random() * 255),
+                green: Math.floor(Math.random() * 255),
+                blue: Math.floor(Math.random() * 255)
+            };
 
-            }, function (data) {
-                window.alert(data);
-            });
-        };
+            var mySwSrv = SwitchService;
+            hc.switchToggle = function (sw) {
+                console.log("Switch toggled" + sw.state);
+                mySwSrv.setRoom("hall");
+                mySwSrv.setAppl(sw.key);
+                mySwSrv.setState(sw.state ? "off" : "on");
+                mySwSrv.performSwitch().then(function (data) {
 
-    }]);
+                }, function (data) {
+                    window.alert(data);
+                });
+            };
+
+            var myRgbSrv = RGBService;
+            myRgbSrv.setRoom("hall");
+            myRgbSrv.setAppl("rgb");
+
+            hc.slide = function () {
+                myRgbSrv.setColor(hc.color.red, hc.color.green, hc.color.blue);
+                myRgbSrv.performSwitch().then(function (data) {
+
+                }, function (data) {
+                    console.log(data);
+                });
+            };
+
+        }]);
